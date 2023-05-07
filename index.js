@@ -5,13 +5,14 @@ import * as path from 'path';
 
 async function main() {
   const browser = await puppeteer.launch({
-    headless: false,
+    headless: "new",
     userDataDir: './user_data',
     args: [
       '--allow-file-access-from-files',
       '--disable-web-security',
-      '--no-user-gesture-required',
+      '--autoplay-policy=no-user-gesture-required',
     ],
+    ignoreDefaultArgs: ['--mute-audio'],
   });
   const page = await browser.newPage();
 
