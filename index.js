@@ -4,6 +4,8 @@ import puppeteer from 'puppeteer';
 import * as fs from 'fs';
 import * as path from 'path';
 
+const GB = 1024*1024*1024;
+
 async function main(target) {
   const browser = await puppeteer.launch({
     headless: "new",
@@ -13,6 +15,7 @@ async function main(target) {
       '--allow-file-access-from-files',
       '--disable-web-security',
       '--autoplay-policy=no-user-gesture-required',
+      `--disk-cache-size=${1*GB}`
     ],
     ignoreDefaultArgs: ['--mute-audio'],
   });
