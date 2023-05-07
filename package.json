@@ -1,0 +1,12 @@
+{
+  "name": "mynoise-local",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "david.mike.simon@gmail.com",
+  "license": "MIT",
+  "dependencies": {
+    "puppeteer": "^20.1.1"
+  }
+}
