@@ -7,6 +7,7 @@
   "author": "david.mike.simon@gmail.com",
   "license": "MIT",
   "dependencies": {
-    "puppeteer": "^20.1.1"
+    "puppeteer": "^20.1.1",
+    "puppeteer-stream": "^3.0.3"
   }
 }
