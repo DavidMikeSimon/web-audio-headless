@@ -54,7 +54,7 @@ async function main(url, filename) {
       await promiseExec(`${path.join(path.resolve(), "loopcrossfade.sh")} ${outputFilePath} output`);
       console.log("Finished processing");
 
-      // fs.unlinkSync(outputFilePath);
+      fs.unlinkSync(outputFilePath);
     }
   }, 1000);
 }
