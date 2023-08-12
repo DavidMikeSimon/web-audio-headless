@@ -51,8 +51,9 @@ async function main(url, filename) {
       await browser.close();
       console.log("Finished recording");
 
-      await promiseExec(`${path.join(path.resolve(), "loopcrossfade.sh")} ${outputFilePath} output`);
-      console.log("Finished processing");
+      //await promiseExec(`${path.join(path.resolve(), "loopcrossfade.sh")} ${outputFilePath} output`);
+      await promiseExec(`ffmpeg -ss 5 -i ${outputFilePath} -filter:a loudnorm ${path.join(path.resolve(), 'output', filename)}`);
+      //console.log("Finished processing");
 
       fs.unlinkSync(outputFilePath);
     }
