@@ -13,7 +13,7 @@ const promiseExec = util.promisify(exec);
 
 async function main(url, filename) {
   // const outputFilePath = path.join("/tmp", `${filename}.webm`);
-  const outputFilePath = path.join(path.resolve(), `${filename}.webm`);
+  const outputFilePath = path.join(path.resolve(), 'raw', `${filename}.webm`);
   const file = fs.createWriteStream(outputFilePath);
 
   const browser = await launch({
@@ -51,9 +51,8 @@ async function main(url, filename) {
       await browser.close();
       console.log("Finished recording");
 
-      //await promiseExec(`${path.join(path.resolve(), "loopcrossfade.sh")} ${outputFilePath} output`);
-      await promiseExec(`ffmpeg -ss 5 -i ${outputFilePath} -filter:a loudnorm ${path.join(path.resolve(), 'output', filename)}`);
-      //console.log("Finished processing");
+      await promiseExec(`${path.join(path.resolve(), "loopcrossfade.sh")} "${outputFilePath}" output`);
+      console.log("Finished processing");
 
       fs.unlinkSync(outputFilePath);
     }
